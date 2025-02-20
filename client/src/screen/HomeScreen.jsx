@@ -2,17 +2,25 @@ import { SafeAreaView, ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { useTheme } from "../../ThemeContext";
 import HomeHeader from "../components/home/HomeHeader";
+import UpcomingTask from "../components/home/UpcomingTask";
 
 const HomeScreen = () => {
   const { theme } = useTheme();
   return (
-    <SafeAreaView
-      style={[styles.container, { backgroundColor: theme.background }]}
-    >
-      <ScrollView style={styles.scrollView}>
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 20,
+        }}
+      >
         <HomeHeader />
+        <UpcomingTask />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -27,6 +35,5 @@ const styles = StyleSheet.create({
   },
   scrollView: {
     width: "100%",
-    gap: 20,
   },
 });

@@ -28,7 +28,7 @@ const MainTabNavigator = () => {
           paddingTop: 10,
           height: 80,
         },
-        tabBarActiveTintColor: theme.primary,
+        tabBarActiveTintColor: theme.text,
         tabBarInactiveTintColor: theme.secondary,
       }}
     >
@@ -60,7 +60,7 @@ const MainTabNavigator = () => {
             <MaterialIcons
               name="add-circle"
               size={35}
-              color={color}
+              color={theme.primary}
               style={{ width: 35, height: 35 }}
             />
           ),

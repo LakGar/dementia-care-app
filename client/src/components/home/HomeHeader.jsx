@@ -2,11 +2,16 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { useTheme } from "../../../ThemeContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useNavigation } from "@react-navigation/native";
 const HomeHeader = () => {
   const { theme } = useTheme();
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.leftContainer}>
+      <TouchableOpacity
+        style={styles.leftContainer}
+        onPress={() => navigation.navigate("Profile")}
+      >
         <View
           style={[
             styles.userImg,
@@ -19,7 +24,7 @@ const HomeHeader = () => {
           <Text style={[styles.userName, { color: theme.text }]}>
             Hello, Jane
           </Text>
-          <Text style={[styles.userEmail, { color: theme.secondary }]}>
+          <Text style={[styles.userEmail, { color: theme.subText }]}>
             janed02@gmail.com
           </Text>
         </View>
@@ -44,7 +49,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     paddingHorizontal: 20,
-    paddingTop: 10,
+    paddingTop: 60,
   },
   leftContainer: {
     display: "flex",
@@ -60,7 +65,6 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderWidth: 1,
   },
   userName: {
     fontSize: 20,
