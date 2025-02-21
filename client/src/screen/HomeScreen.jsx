@@ -3,7 +3,7 @@ import React from "react";
 import { useTheme } from "../../ThemeContext";
 import HomeHeader from "../components/home/HomeHeader";
 import UpcomingTask from "../components/home/UpcomingTask";
-
+import SearchTask from "../components/home/SearchTask";
 const HomeScreen = () => {
   const { theme } = useTheme();
   return (
@@ -18,6 +18,7 @@ const HomeScreen = () => {
         }}
       >
         <HomeHeader />
+        <SearchTask />
         <UpcomingTask />
       </ScrollView>
     </View>

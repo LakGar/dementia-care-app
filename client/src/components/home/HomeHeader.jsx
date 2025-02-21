@@ -49,7 +49,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
     paddingHorizontal: 20,
-    paddingTop: 60,
+    height: 50,
+    marginTop: 60,
   },
   leftContainer: {
     display: "flex",
