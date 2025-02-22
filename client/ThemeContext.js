@@ -23,7 +23,7 @@ const darkTheme = {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(darkTheme); // Default to light theme
+  const [theme, setTheme] = useState(lightTheme); // Default to light theme
 
   const toggleTheme = () => {
     setTheme((prevTheme) =>

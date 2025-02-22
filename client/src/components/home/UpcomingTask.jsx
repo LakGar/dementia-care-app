@@ -4,6 +4,7 @@ import {
   View,
   Dimensions,
   TouchableOpacity,
+  Image,
 } from "react-native";
 import React, { useState, useEffect, useRef } from "react";
 import { useTheme } from "../../../ThemeContext";
@@ -41,26 +42,32 @@ const UpcomingTask = () => {
   const targetProgress = hasNoTasks ? 0 : (completedTasks / totalTasks) * 100;
   const [progress, setProgress] = useState(0);
 
-  const tasks = [
+  const [tasks, setTasks] = useState([
     {
       id: 1,
       title: "Give a gift to my friend",
       completed: false,
       user: "John Doe",
+      image:
+        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fGRlZmF1bHQlMjBmYWNlfGVufDB8fDB8fHww",
     },
     {
       id: 2,
       title: "Buy a new phone",
       completed: true,
       user: "Jane Doe",
+      image:
+        "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGRlZmF1bHQlMjBmYWNlfGVufDB8fDB8fHww",
     },
     {
       id: 3,
       title: "Buy a new laptop",
       completed: true,
       user: "Jason Doe",
+      image:
+        "https://images.unsplash.com/photo-1509460913899-515f1df34fea?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGRlZmF1bHQlMjBmYWNlfGVufDB8fDB8fHww",
     },
-  ];
+  ]);
 
   useEffect(() => {
     let startTime = null;
@@ -279,7 +286,13 @@ const UpcomingTask = () => {
             {isDropDownOpen && (
               <>
                 {tasks.slice(0, 3).map((task) => (
-                  <View style={styles.dropDownTaskContainer} key={task.id}>
+                  <View
+                    style={[
+                      styles.dropDownTaskContainer,
+                      task.completed && { opacity: 0.4 },
+                    ]}
+                    key={task.id}
+                  >
                     <View
                       style={[
                         styles.userImg,
@@ -289,7 +302,10 @@ const UpcomingTask = () => {
                         },
                       ]}
                     >
-                      <Ionicons name="person" size={24} color={theme.text} />
+                      <Image
+                        source={{ uri: task.image }}
+                        style={{ width: 40, height: 40, borderRadius: 250 }}
+                      />
                     </View>
                     <View style={styles.dropDownTaskDetails}>
                       <Text
@@ -309,7 +325,14 @@ const UpcomingTask = () => {
                         {task.user}
                       </Text>
                     </View>
-                    <TouchableOpacity style={styles.dropDownTaskButton}>
+                    <TouchableOpacity
+                      style={styles.dropDownTaskButton}
+                      //change the task status
+                      onPress={() => {
+                        task.completed = !task.completed;
+                        setTasks(tasks);
+                      }}
+                    >
                       {task.completed ? (
                         <Octicons
                           name="check-circle-fill"

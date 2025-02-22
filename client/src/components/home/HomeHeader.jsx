@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { useTheme } from "../../../ThemeContext";
 import Ionicons from "@expo/vector-icons/Ionicons";
@@ -18,7 +18,13 @@ const HomeHeader = () => {
             { backgroundColor: theme.secondary, borderColor: theme.text },
           ]}
         >
-          <Ionicons name="person" size={24} color={theme.text} />
+          <Image
+            source={{
+              uri: "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGRlZmF1bHQlMjBmYWNlfGVufDB8fDB8fHww",
+            }}
+            style={{ width: 50, height: 50, borderRadius: 250 }}
+          />
+          {/* <Ionicons name="person" size={24} color={theme.text} /> */}
         </View>
         <View>
           <Text style={[styles.userName, { color: theme.text }]}>

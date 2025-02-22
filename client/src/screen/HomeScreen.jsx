@@ -4,6 +4,7 @@ import { useTheme } from "../../ThemeContext";
 import HomeHeader from "../components/home/HomeHeader";
 import UpcomingTask from "../components/home/UpcomingTask";
 import SearchTask from "../components/home/SearchTask";
+import PatientTasks from "../components/home/PatientTasks";
 const HomeScreen = () => {
   const { theme } = useTheme();
   return (
@@ -20,6 +21,7 @@ const HomeScreen = () => {
         <HomeHeader />
         <SearchTask />
         <UpcomingTask />
+        <PatientTasks />
       </ScrollView>
     </View>
   );
